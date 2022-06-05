@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HumanResourcesDepartmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id_Category" />
+    </Key>
+    <Property Name="Id_Category" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Position_Category" FromRole="Category" ToRole="Position" />
+  </EntityType>
+  <EntityType Name="DayOfTheWeek">
+    <Key>
+      <PropertyRef Name="Id_DayOfTheWeek" />
+    </Key>
+    <Property Name="Id_DayOfTheWeek" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_DayOfTheWeek" FromRole="DayOfTheWeek" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Id_Position" />
+    </Key>
+    <Property Name="Id_Position" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Id_Category" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Position_Category" FromRole="Position" ToRole="Category" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_Profile_Position" FromRole="Position" ToRole="Profile" />
+    <NavigationProperty Name="Staffing" Relationship="Self.FK_Staffing_Position" FromRole="Position" ToRole="Staffing" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="Id_Profile" />
+    </Key>
+    <Property Name="Id_Profile" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Full_Name" Type="String" MaxLength="120" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Date_of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Place_of_Birth" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Place_of_Registration" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Criminal_Record_Information" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mail_Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Passport_Data" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SNILS" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Id_Position" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Profile_Position" FromRole="Profile" ToRole="Position" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_Profile" FromRole="Profile" ToRole="Schedule" />
+    <NavigationProperty Name="Vacation_Schedule" Relationship="Self.FK_Vacation_Schedule_Profile" FromRole="Profile" ToRole="Vacation_Schedule" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id_Schedule" />
+    </Key>
+    <Property Name="Id_Schedule" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Profile" Type="Int64" Nullable="false" />
+    <Property Name="Id_DayOfTheWeek" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Duration" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+    <Property Name="Cabinet" Type="Int32" />
+    <NavigationProperty Name="DayOfTheWeek" Relationship="Self.FK_Schedule_DayOfTheWeek" FromRole="Schedule" ToRole="DayOfTheWeek" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_Schedule_Profile" FromRole="Schedule" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Staffing">
+    <Key>
+      <PropertyRef Name="Id_Staffing" />
+    </Key>
+    <Property Name="Id_Staffing" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Position" Type="Int64" Nullable="false" />
+    <Property Name="Number_Of_Staff_Units" Type="Double" Nullable="false" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Night_Shift_Allowance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Premium" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="District_Coefficient" Type="Double" Nullable="false" />
+    <Property Name="In_All" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Staffing_Position" FromRole="Staffing" ToRole="Position" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Vacation_Schedule">
+    <Key>
+      <PropertyRef Name="Id_Vacation_Schedule" />
+    </Key>
+    <Property Name="Id_Vacation_Schedule" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Profile" Type="Int64" Nullable="false" />
+    <Property Name="Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_Vacation_Schedule_Profile" FromRole="Vacation_Schedule" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id_Worker" />
+    </Key>
+    <Property Name="Id_Worker" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Position_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Position" Type="Self.Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id_Category" />
+      </Principal>
+      <Dependent Role="Position">
+        <PropertyRef Name="Id_Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_DayOfTheWeek">
+    <End Role="DayOfTheWeek" Type="Self.DayOfTheWeek" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DayOfTheWeek">
+        <PropertyRef Name="Id_DayOfTheWeek" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="Id_DayOfTheWeek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profile_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id_Position" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="Id_Position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staffing_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Staffing" Type="Self.Staffing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id_Position" />
+      </Principal>
+      <Dependent Role="Staffing">
+        <PropertyRef Name="Id_Position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id_Profile" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="Id_Profile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vacation_Schedule_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="Vacation_Schedule" Type="Self.Vacation_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id_Profile" />
+      </Principal>
+      <Dependent Role="Vacation_Schedule">
+        <PropertyRef Name="Id_Profile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HumanResourcesDepartmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="DayOfTheWeek" EntityType="Self.DayOfTheWeek" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+    <EntitySet Name="Staffing" EntityType="Self.Staffing" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Vacation_Schedule" EntityType="Self.Vacation_Schedule" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Position_Category" Association="Self.FK_Position_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Position" EntitySet="Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_DayOfTheWeek" Association="Self.FK_Schedule_DayOfTheWeek">
+      <End Role="DayOfTheWeek" EntitySet="DayOfTheWeek" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profile_Position" Association="Self.FK_Profile_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staffing_Position" Association="Self.FK_Staffing_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Staffing" EntitySet="Staffing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Profile" Association="Self.FK_Schedule_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vacation_Schedule_Profile" Association="Self.FK_Vacation_Schedule_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Vacation_Schedule" EntitySet="Vacation_Schedule" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef2629cf4b6a441d81523c54a96da52a" Name="Diagram1">
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Category" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.DayOfTheWeek" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Position" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Profile" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Schedule" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Staffing" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Vacation_Schedule" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanResourcesDepartmentModel.Worker" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Position_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Schedule_DayOfTheWeek" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Profile_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Staffing_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Schedule_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanResourcesDepartmentModel.FK_Vacation_Schedule_Profile" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

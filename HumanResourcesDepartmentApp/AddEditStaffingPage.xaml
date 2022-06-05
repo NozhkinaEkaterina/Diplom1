@@ -1,0 +1,44 @@
+﻿<Page x:Class="HumanResourcesDepartmentApp.AddEditStaffingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HumanResourcesDepartmentApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditStaffingPage" Background="Tan">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Специальность" Grid.Row="0" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Количество специалистов" Grid.Row="1" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Оклад" Grid.Row="2" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Надбавка за ночные смены" Grid.Row="3" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Премиальная надбавка" Grid.Row="4" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Районный коэффициент" Grid.Row="5" FontSize="20"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Итого" Grid.Row="6" FontSize="20"></TextBlock>
+
+        <ComboBox SelectedItem="{Binding Position}" x:Name="CBPosition" DisplayMemberPath="Name" Grid.Row="0" FontSize="20" Grid.Column="1" IsTextSearchEnabled="True" IsEditable="True" IsReadOnly="False" ></ComboBox>
+        <TextBox Text="{Binding Number_Of_Staff_Units}" x:Name="TBNumber_Of_Staff_Units" Grid.Row="1" Grid.Column="1" FontSize="20"></TextBox>
+        <TextBox Text="{Binding Salary}" x:Name="TBSalary" Grid.Row="2" Grid.Column="1" FontSize="20"></TextBox>
+        <TextBox Text="{Binding Night_Shift_Allowance}" x:Name="TBNight_Shift_Allowance" Grid.Row="3" Grid.Column="1" FontSize="20"></TextBox>
+        <TextBox Text="{Binding Premium}" x:Name="TBPremium" Grid.Row="4" Grid.Column="1" FontSize="20"></TextBox>
+        <TextBox Text="{Binding District_Coefficient}" x:Name="TBDistrict_Coefficient" Grid.Row="5" Grid.Column="1" FontSize="20"></TextBox>
+        <TextBox Text="{Binding In_All}" x:Name="TBIn_All" Grid.Row="6" Grid.Column="1" IsReadOnly="True"  FontSize="20" ></TextBox>
+
+        <Button Background="Coral" Content="Сохранить" Grid.Row="7" Name="BtnSave" HorizontalAlignment="Right" FontSize="20"  Click="BtnSave_Click" Grid.ColumnSpan="2" Margin="-2,0,0,0" Width="802" />
+    </Grid>
+</Page>
